@@ -4,3 +4,18 @@
   height: 550px;
   margin: auto;
 }
+
+.user-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link-unstyled:hover {
+  text-decoration: none;
+}
+
