@@ -1,1 +1,4 @@
-<h4> <%= @message %> </h4>
+<h4> <%= @message.content %> </h4>
+<% @message.photos.each do |photo| %>
+  <%= cl_image_tag photo.key %>
+<% end %>
