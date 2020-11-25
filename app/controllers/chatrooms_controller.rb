@@ -1,13 +1,11 @@
 class ChatroomsController < ApplicationController
 
   def index
-    authorize @chatroom
-    @chatrooms = Chatroom.all
+    @chatrooms = policy_scope(Chatroom).order(created_at: :desc)
   end
 
   def show
-    authorize @chatroom
     @chatroom = Chatroom.find(params[:id])
+    authorize @chatroom
   end
-
 end
