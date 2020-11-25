@@ -3,20 +3,29 @@
 <div class="chat-container">
   <ul class="list-unstyled">
 
-    <%= @chatrooms.each do |chatroom| %>
+    <% @chatrooms.each do |chatroom| %>
 
-    <li class="chat-card">
+    <li class="chat-card p-3">
+      <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
       <div class="d-flex">
         <img class="avatar-large" src="https://images.unsplash.com/photo-1606147472786-86dbd849a56f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
+        <div class="user-details ml-3">
+          <%  if current_user == chatroom.friend1  %>
+            <p><%= chatroom.friend2.email %></p>
+          <% else %>
+            <p><%= chatroom.friend1.email %></p>
+          <% end %>
+          <h4>Spotted @somewhere</h4>
+        </div>
+
       </div>
+      <% end %>
     </li>
+    <hr>
 
     <% end %>
 
+
   </ul>
+  <%= link_to "Create a new spot", new_message_path, class:"btn btn-primary"  %>
 </div>
-
-
-
-
-
