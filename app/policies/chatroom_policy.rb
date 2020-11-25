@@ -4,4 +4,12 @@ class ChatroomPolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def index?
+    record.user == user
+  end
+
+  def show?
+    record.user == user
+  end
 end
