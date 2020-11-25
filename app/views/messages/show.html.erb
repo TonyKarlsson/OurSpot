@@ -2,3 +2,12 @@
 <% @message.photos.each do |photo| %>
   <%= cl_image_tag photo.key %>
 <% end %>
+
+
+<li class="list-group-item">
+      <%= @message.content %>
+      <%= link_to "Remove",
+                  message_path(@message),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
+</li>
