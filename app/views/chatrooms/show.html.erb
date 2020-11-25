@@ -1,3 +1,10 @@
 <h1>A single chatroom</h1>
-
-
+<ul>
+  <% @chatroom.messages.each do |message| %>
+    <% if message.user == current_user %>
+       <li><%= message.user.email %> <%= message.content %></li>
+    <% else %>
+      <li> <%= message.user.email %> <%=message.content%></li>
+    <% end %>
+  <% end  %>
+</ul>
