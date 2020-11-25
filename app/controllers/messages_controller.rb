@@ -37,13 +37,15 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    @message = Message.find(params[:id])
     authorize @message
+    @message.destroy
+    redirect_to messages_path
   end
+
 
   private
 
-  def
-  end
 
   def message_params
     params.require(:message).permit(:content, photos: [])
