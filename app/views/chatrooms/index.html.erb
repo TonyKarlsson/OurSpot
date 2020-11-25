@@ -5,6 +5,11 @@
 
     <% @chatrooms.each do |chatroom| %>
 
+      <% if policy(chatroom).index? %>
+
+
+
+
     <li class="chat-card p-3">
       <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
       <div class="d-flex">
@@ -23,9 +28,13 @@
     </li>
     <hr>
 
+      <% end %>
+
     <% end %>
 
 
   </ul>
-  <%= link_to "Create a new spot", new_message_path, class:"btn btn-primary"  %>
+  <% if policy(@message).create? %>
+    <%= link_to "Create a new spot", new_message_path, class:"btn btn-primary"  %>
+  <% end %>
 </div>
