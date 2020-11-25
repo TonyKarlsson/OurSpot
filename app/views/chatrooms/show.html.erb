@@ -6,5 +6,10 @@
     <% else %>
       <li> <%= message.user.email %> <%=message.content%></li>
     <% end %>
+    <% message.photos.each do |photo| %>
+      <%= cl_image_tag photo.key %>
   <% end  %>
+  <%# @chatroom.messages.each do |photo| %>
+  <%#= cl_image_tag photo.key %>
+<% end %>
 </ul>
