@@ -7,6 +7,7 @@ class ChatroomPolicy < ApplicationPolicy
 
 
   def show?
-    record.user == user
+    record.friend1 == user || record.friend2 == user
+    # true
   end
 end
