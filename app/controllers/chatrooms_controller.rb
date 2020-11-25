@@ -1,7 +1,7 @@
 class ChatroomsController < ApplicationController
 
   def index
-    @chatrooms = Chatroom.all
+    @chatrooms = policy_scope(Chatroom).order(created_at: :desc)
   end
 
   def show
