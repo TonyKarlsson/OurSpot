@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    authorize @message
   end
 
   def new
@@ -36,9 +37,13 @@ class MessagesController < ApplicationController
   end
 
   def destroy
+    authorize @message
   end
 
   private
+
+  def
+  end
 
   def message_params
     params.require(:message).permit(:content, photos: [])
