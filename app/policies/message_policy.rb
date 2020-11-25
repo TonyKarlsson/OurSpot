@@ -4,4 +4,13 @@ class MessagePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+    def show?
+      record.user == user
+
+    end
+
+    def destroy?
+      record.user == user
+   end
 end
