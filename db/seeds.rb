@@ -11,8 +11,19 @@ User.destroy_all
 puts "destroyed seeds"
 
 
-User.create(email: "test@ourspot.com", password:"123456")
-User.create(email: "hello@ourspot.com", password:"123456")
+sarmad = User.create(email: "sarmad@ourspot.com", password:"123456")
+vasil = User.create(email: "vasil@ourspot.com", password:"123456")
+michael = User.create(email: "michael@ourspot.com", password:"123456")
+tony = User.create(email: "tony@ourspot.com", password:"123456")
+
+sarmad.friend_request(tony) # Sarmad and Tony are friends
+tony.accept_request(sarmad)
+vasil.friend_request(michael) # Vasil and Michael are friends
+michael.accept_request(vasil)
+michael.friend_request(tony) # Michael and Tony are friends
+tony.accept_request(michael)
+
+
 puts "new Users created"
 # User.create(email: "blah@ourspot.com", password:"123456")
 # User.create(email: "trash@ourspot.com", password:"123456")

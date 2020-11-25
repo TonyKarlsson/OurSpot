@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def index
   end
 
@@ -14,11 +13,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    authorize @message
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
-      if @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2 ).first || Chatroom.where(friend2: current_user, friend1: @friend2 ).first
+    authorize @message
+      if @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || Chatroom.where(friend2: current_user, friend1: @friend2).first
         @message.chatroom = @chatroom
       else
         @chatroom = Chatroom.new
@@ -41,9 +40,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def
-  end
 
   def message_params
     params.require(:message).permit(:content, photos: [])
