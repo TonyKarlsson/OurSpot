@@ -9,9 +9,11 @@ class MessagesController < ApplicationController
 
   def new
     @message = Message.new
+    authorize @message
   end
 
   def create
+    authorize @message
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
