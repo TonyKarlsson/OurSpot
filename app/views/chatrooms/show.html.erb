@@ -1,15 +1,27 @@
 <h1>A single chatroom</h1>
-<ul>
-  <% @chatroom.messages.each do |message| %>
-    <% if message.user == current_user %>
-       <li><%= message.user.email %> <%= message.content %></li>
-    <% else %>
-      <li> <%= message.user.email %> <%=message.content%></li>
-    <% end %>
-    <% message.photos.each do |photo| %>
-      <%= cl_image_tag photo.key %>
-  <% end  %>
-  <%# @chatroom.messages.each do |photo| %>
-  <%#= cl_image_tag photo.key %>
-<% end %>
-</ul>
+
+
+<div class="text-container">
+  <div class="header d-flex">
+    <img class="avatar-large ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
+    <h4 class="ml-4 mt-3 mb-2">TrapQueen92</h4>
+  </div>
+  <div class="text-body">
+    <ul class="list-unstyled">
+      <% @chatroom.messages.each do |message| %>
+        <% if message.user == current_user %>
+          <div class="left mb-2">
+           <li class="color2"><%= message.content %></li>
+           <span><%= message.user.email %></span>
+          </div>
+        <% else %>
+          <div class="right mb-2">
+            <li class="color1"><%=message.content%></li>
+            <span><%= message.user.email %></span>
+          </div>
+        <% end %>
+      <% end  %>
+    </ul>
+  </div>
+  <input class="new-message" type="text">
+</div>
