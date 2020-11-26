@@ -31,7 +31,6 @@ class MessagesController < ApplicationController
     # TODO: @message.longitude =
     # TODO: @message.latitude =
     if @message.save!
-      # redirect_to message_path(@message)
       redirect_to chatroom_path(@chatroom)
     else
       render :new
