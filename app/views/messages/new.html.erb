@@ -1,16 +1,17 @@
 <div class="form-container">
   <h1>New Spot</h1>
   <%= simple_form_for @message do |f| %>
-    <%= simple_fields_for @chatroom do |form| %>
-      <%= form.select :friend2, options_for_select(format_friend_list(current_user)) %>
-    <% end %>
-    <%= f.input :content %>
-    <%#= f.input :photos, as: :file, :multiple => true %>
-    <%= f.file_field :photos, multiple: true %>
-    <div class="d-flex">
-      <%#= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
-      <%= f.submit "Create spot", class: "btn btn-primary rounded w-100 mr-4" %>
-      <%= link_to "Go back", chatrooms_path, class: "btn btn-success rounded w-100"  %>
-    </div>
-    <% end %>
+      <%= simple_fields_for @chatroom do |form| %>
+        <%= form.select :friend2, options_for_select(format_friend_list(current_user)) %>
+      <% end %>
+      <%= f.input :content %>
+      <%= f.file_field :photos, multiple: true %>
+      <%= f.hidden_field :longitude %>
+      <%= f.hidden_field :latitude%>
+      <div class="d-flex">
+        <%= f.submit "Create spot", class: "btn btn-primary rounded w-100 mr-4" %>
+        <%= link_to "Go back", root_path, class: "btn btn-success rounded w-100"  %>
+      </div>
+  <% end %>
 </div>
+
