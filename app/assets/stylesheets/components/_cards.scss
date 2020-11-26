@@ -1,14 +1,41 @@
 .chat-container {
   background: white;
-  width: 800px;
-  height: 550px;
+  height: 100vh;
   margin: auto;
+}
+
+.chat-card {
+  padding: 4px;
+  margin-top: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  border-bottom: 1px solid rgba(255,255,255, 0.3);
+}
+
+.chat-background {
+  background-size: cover;
+  background-position: center;
+}
+
+.margin-from-navbar {
+  margin-top: 7vh;
+}
+
+.background-blur {
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  height: 100%;
+  padding-top: 6px;
 }
 
 .user-details {
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+.user-details p {
+margin-bottom: 4px;
 }
 
 a {
