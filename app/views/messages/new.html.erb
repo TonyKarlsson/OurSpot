@@ -8,6 +8,7 @@
     <%#= f.input :photos, as: :file, :multiple => true %>
     <%= f.file_field :photos, multiple: true %>
     <div class="d-flex">
+      <%#= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
       <%= f.submit "Create spot", class: "btn btn-primary rounded w-100 mr-4" %>
       <%= link_to "Go back", chatrooms_path, class: "btn btn-success rounded w-100"  %>
     </div>
