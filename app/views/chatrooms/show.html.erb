@@ -1,44 +1,55 @@
-<div class="text-container">
-  <div class="header d-flex">
-    <img class="avatar-large ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
-    <h4 class="ml-4 mt-3 mb-2">TrapQueen92</h4>
-  </div>
-  <div class="text-body">
-    <ul class="list-unstyled">
-      <% @chatroom.messages.each do |message| %>
-        <% if message.user == current_user %>
-          <div class="left mb-2">
-           <li class="color2"><%= message.content %></li>
-           <span><%= message.user.email %></span>
-          </div>
-        <% else %>
-          <div class="right mb-2">
-            <li class="color1"><%=message.content%></li>
-            <span><%= message.user.email %></span>
-          </div>
-        <% end %>
-      <% end  %>
-    </ul>
-  </div>
-  <div class="new-message">
-  <%= simple_form_for @message do |f| %>
-    <%= f.input :content, label: false %>
-    <%= hidden_field_tag :friend2, @chatroom.friend2.id %>
-    <div class="image-upload">
-      <label for="file-input">
-        <i class="fas fa-paperclip"></i>
-      </label>
-      <%= f.file_field :photos, multiple: true, id: "file-input" %>
+<div class="chat-container chat-background" style="background-image: url('https://images.unsplash.com/photo-1606235268286-cfc161fed099?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9');">
+  <div class="text-container">
+    <div class="header d-flex margin-from-navbar">
+      <img class="avatar-medium ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
+      <h4 class="ml-4 mt-3 mb-2 white">TrapQueen92</h4>
     </div>
+    <div class="text-body">
 
-    <div class="submit">
-      <label for="submit-btn">
-        <i class="fas fa-paper-plane" id="btn"></i>
-      </label>
-      <%= f.submit "Save"%>
+        <% @chatroom.messages.each do |message| %>
+        <div class="w-100">
+          <% if message.user == current_user %>
+
+            <div class="left mb-2">
+              <div class="color2 w-100">
+               <span class="message"><%= message.content %></span>
+             </div>
+             <span class="white"><%= message.user.email %></span>
+            </div>
+          <% else %>
+            <div class="right mb-2">
+              <span class="color1"><%=message.content%></span>
+              <span class="white"><%= message.user.email %></span>
+            </div>
+          <% end %>
+        </div>
+        <% end  %>
+
     </div>
+    <div class="new-message">
 
-  <% end %>
+      <%= simple_form_for @message do |f| %>
+        <div class="image-upload">
+          <label for="file-input">
+            <i class="fas fa-paperclip"></i>
+          </label>
+          <%= f.file_field :photos, multiple: true, id: "file-input" %>
+        </div>
+
+        <%= f.input :content, label: false %>
+        <%= hidden_field_tag :friend2, @chatroom.friend2.id %>
+
+
+        <div class="submit">
+          <label for="submit-btn">
+            <i class="fas fa-paper-plane" id="btn"></i>
+          </label>
+          <%= f.submit "Save"%>
+        </div>
+
+      <% end %>
+
+    </div>
   </div>
 </div>
-<%#= link_to "Back to chatrooms", chatrooms_path, class:"btn btn-primary"  %>
+  <%#= link_to "Back to chatrooms", chatrooms_path, class:"btn btn-primary"  %>
