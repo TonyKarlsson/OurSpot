@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
     @message.user = current_user
     @chatroom = Chatroom.find(params[:id]) if params[:id]
     authorize @message
-      if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || Chatroom.where(friend2: current_user, friend1: @friend2).first
+      if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
         @message.chatroom = @chatroom
       else
         @chatroom = Chatroom.new
@@ -28,8 +28,6 @@ class MessagesController < ApplicationController
         @chatroom.save!
         @message.chatroom = @chatroom
       end
-    # TODO: @message.longitude =
-    # TODO: @message.latitude =
     if @message.save!
       redirect_to chatroom_path(@chatroom)
     else
@@ -48,6 +46,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, photos: [])
+    params.require(:message).permit(:content, :longitude, :latitude, photos: [])
   end
 end

@@ -28,10 +28,12 @@ import "bootstrap";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
+import { initGetCoordinates } from '../components/initGetCoordinates';
 import { submitForm } from '../components/initSubmitForm';
 
 document.addEventListener('turbolinks:load', () => {
   submitForm();
   // Call your functions here, e.g:
   // initSelect2();
+  initGetCoordinates();
 });

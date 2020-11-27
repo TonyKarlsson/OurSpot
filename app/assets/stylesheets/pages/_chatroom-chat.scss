@@ -1,13 +1,19 @@
 .text-container {
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 93vh;
+  height: 100vh;
   margin: auto;
   border: 3px solid rgba(235, 235,235, 0.7);
-  background: white;
+  background: transparent;
   border-radius: 15px;
+
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+  border-radius: 10px;
 }
+
+
 
 .header {
   height: 100px;
@@ -17,42 +23,54 @@
 }
 
 .new-message {
-  height: 50px;
   width: 100%;
 
 }
 
 .text-body {
   flex: 1 1 auto;
-  overflow-y: auto;
   padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .left {
   text-align: left;
   white-space: nowrap;
+  max-width: 50%;
+  float: left;
 }
 
 .right {
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
+  max-width: 50%;
+  float: right;
+  display: flex;
+  flex-direction: column;
 }
 
 .color2 {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 25px;
   padding: 10px 15px;
-  background: #264653;
+  background: transparent;
   color: white;
-  width: fit-content;
-  white-space: nowrap;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  text-align: center;
+}
+
+.message {
+    width: inherit;
+    white-space: pre-wrap;
 }
 
 .color1 {
-  border: 1px solid black;
+  border: 1px solid white;
   border-radius: 25px;
   padding: 10px 15px;
-  background: #792359;
+  background: transparent;
   color: white;
 }
 
@@ -63,6 +81,7 @@
 
 .image-upload > label {
   cursor: pointer;
+  margin-bottom: 0px !important;
 }
 
 .submit > input {
@@ -71,21 +90,52 @@
 
 .submit > label {
   cursor: pointer;
+  margin-bottom: 0px !important;
 }
 
 
+#new_message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid white;
+  border-radius: 15px;
+  margin: 0 10px 10px 10px
+}
 
+.image-upload {
+  padding: 14px 8px;
+}
 
+.submit {
+  padding: 14px 8px;
+}
 
+.form-group {
+  margin-bottom: 0px !important;
+  width: 80%;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
 
+.form-control {
+   background: transparent !important;
+   border: transparent !important;
+}
 
+.white {
+  color: white;
+}
 
+.fas {
+  color: white;
+  font-size: 18px;
+}
 
-
-
-
-
-
+textarea.form-control {
+  height: auto;
+  color: white !important;
+}
 
 
 
