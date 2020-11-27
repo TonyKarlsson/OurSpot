@@ -5,6 +5,7 @@
     <div class="mt-4">
       <% if current_user %>
         <%= link_to "See my spots", chatrooms_path, class: "btn btn-success rounded-pill ml-3"  %>
+         <%= render 'shared/new_message_button' %>
       <% else %>
         <%= link_to "Create an account", new_user_registration_path, class: "btn btn-primary rounded-pill"  %>
         <%= link_to "Log In", new_user_session_path, class: "btn btn-success rounded-pill ml-3" %>

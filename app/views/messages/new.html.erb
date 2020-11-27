@@ -1,6 +1,7 @@
 <div class="form-container">
   <h1>New Spot</h1>
   <%= simple_form_for @message do |f| %>
+
       <%= simple_fields_for @chatroom do |form| %>
         <%= form.select :friend2, options_for_select(format_friend_list(current_user)) %>
       <% end %>
@@ -14,4 +15,3 @@
       </div>
   <% end %>
 </div>
-
