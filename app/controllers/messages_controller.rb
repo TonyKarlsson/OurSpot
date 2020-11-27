@@ -26,8 +26,6 @@ class MessagesController < ApplicationController
         @chatroom.save!
         @message.chatroom = @chatroom
       end
-    # TODO: @message.longitude =
-    # TODO: @message.latitude =
     if @message.save!
       redirect_to chatroom_path(@chatroom)
     else
@@ -46,6 +44,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, photos: [])
+    params.require(:message).permit(:content, :longitude, :latitude, photos: [])
   end
 end
