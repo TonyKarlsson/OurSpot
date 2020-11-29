@@ -1,0 +1,49 @@
+.container-form {
+  height: 93vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.form-container {
+    width: 100%;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+}
+
+.text-area-icon {
+  margin-bottom: 0 !important;
+}
+
+.rnd-fas {
+  border: 1px solid #132743;
+  padding: 5px;
+  border-radius: 50%;
+  background: #fecbcf;
+}
+
+.image-upload-icon {
+  padding: 8px 8px;
+}
+
+.image-upload-icon > input {
+  display: none;
+}
+
+.image-upload-icon > label {
+  cursor: pointer;
+  margin-bottom: 0px !important;
+}
+
+.btn-message {
+  background: #fecbcf !important;
+  color: #132743 !important;
+  border: 1px solid #132743 !important;
+}
+
+#friend2 {
+  margin-bottom: 10px;
+}
