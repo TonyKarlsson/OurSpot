@@ -16,6 +16,8 @@ require("channels")
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
+// CSS
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 // ----------------------------------------------------
 // Note(lewagon): ABOVE IS RAILS DEFAULT CONFIGURATION
@@ -37,3 +39,9 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initGetCoordinates();
 });
+
+import { initMapbox } from '../plugins/init_mapbox';
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})

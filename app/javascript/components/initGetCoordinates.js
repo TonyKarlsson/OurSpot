@@ -4,8 +4,6 @@ const initGetCoordinates = () => {
   function doSomethingWhenLocationIsReady(latitude, longitude) {
     document.getElementById("message_latitude").value = latitude;
     document.getElementById("message_longitude").value = longitude;
-    console.log(document.getElementById("message_latitude"))
-    console.log(document.getElementById("message_longitude"))
     submit.submit();
   }
 
