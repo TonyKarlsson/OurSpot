@@ -17,7 +17,7 @@ class MessagesController < ApplicationController
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
-    @chatroom = Chatroom.find(params[:id]) if params[:id]
+    @chatroom = Chatroom.find(params[:chatroom_id]) if params[:chatroom_id]
     authorize @message
       if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
         @message.chatroom = @chatroom
