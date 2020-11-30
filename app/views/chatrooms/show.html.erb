@@ -1,48 +1,87 @@
-<div class="chat-container chat-background" style="background-image: url('https://images.unsplash.com/photo-1606235268286-cfc161fed099?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9');">
   <div class="text-container">
     <div class="header d-flex margin-from-navbar">
       <img class="avatar-medium ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
-     <h4 class="ml-4 mt-3 mb-2"><%=@chatroom.friend2.username%></h4>
+     <h4 class="ml-4 mt-3 mb-2" style="color: white;"><%=@chatroom.recipient(current_user)%></h4>
     </div>
     <div class="text-body">
 
         <% @chatroom.messages.each do |message| %>
-        <div class="w-100">
           <% if message.user == current_user %>
 
-            <div class="left mb-2">
-              <div class="color2 w-100">
-               <span class="message"><%= message.content %></span>
-             </div>
-             <span class="white"><%= message.user.username %></span>
+            <% if  message.photos.attached? %>
+            <div class="justify-content-end link-msg">
+            <%= link_to message_path do %>
+            <div class="card mb-4 card-img-send" style="width: 14rem;">
+                <%= cl_image_tag message.photos.first.key, class:"card-img-top img-send"%>
+                <div class="card-body">
+                  <p class="card-text"><%= message.content %></p>
+                </div>
+                <span class="black name-position-send"><%= message.user.username %></span>
+              </div>
+              <% end %>
             </div>
+
+            <% else %>
+
+            <div class="justify-content-end mb-4">
+              <div class="msg-content-send">
+                <span class="black"><%= message.content %></span>
+                <span class="black name-position-send"><%= message.user.username %></span>
+              </div>
+            </div>
+
+            <% end %>
+
           <% else %>
-            <div class="right mb-2">
-              <span class="color1"><%=message.content%></span>
-              <span class="white"><%= message.user.username %></span>
+
+
+          <% if  message.photos.attached? %>
+
+          <div class="justify-content-start link-msg">
+            <%= link_to message_path do %>
+            <div class="card mb-4 card-img-receive" style="width: 14rem;">
+              <%= cl_image_tag message.photos.first.key, class:"card-img-top img-receive"%>
+              <div class="card-body">
+                <p class="card-text"><%= message.content %></p>
+              </div>
+              <span class="black name-position"><%= message.user.username %></span>
             </div>
+            <% end %>
+          </div>
+
+          <% else %>
+
+          <div class="justify-content-start mb-4">
+            <div class="msg-content">
+              <span class="black"><%= message.content %></span>
+              <span class="black name-position"><%= message.user.username %></span>
+            </div>
+          </div>
+
           <% end %>
-        </div>
+
+          <% end %>
         <% end  %>
 
     </div>
     <div class="new-message">
 
-      <%= simple_form_for @message do |f| %>
+      <%= simple_form_for @message, html: { class: "message-new"} do |f| %>
         <div class="image-upload">
           <label for="file-input">
-            <i class="fas fa-paperclip"></i>
+            <i class="fas fa-paperclip icon-fas"></i>
           </label>
           <%= f.file_field :photos, multiple: true, id: "file-input" %>
         </div>
 
-        <%= f.input :content, label: false %>
+        <%= f.input :content, label: false, wrapper_html: { class: 'text-area-input' } ,input_html: { class: 'text-input' } %>
         <%= hidden_field_tag :friend2, @chatroom.friend2.id %>
+        <%= hidden_field_tag :chatroom_id, @chatroom.id %>
 
 
         <div class="submit">
           <label for="submit-btn">
-            <i class="fas fa-paper-plane" id="btn"></i>
+            <i class="fas fa-paper-plane icon-fas" id="btn"></i>
           </label>
           <%= f.submit "Save"%>
         </div>
@@ -51,4 +90,4 @@
 
     </div>
   </div>
-</div>
+
