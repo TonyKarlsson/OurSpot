@@ -64,11 +64,12 @@
               <p>not close to location</p>
             <% end  %>
           <% end  %>
+        <% end %>
 
     </div>
     <div class="new-message">
 
-      <%= simple_form_for @message, html: { class: "message-new"} do |f| %>
+      <%= simple_form_for @message, remote: true, html: { class: "message-new"} do |f| %>
         <div class="image-upload">
           <label for="file-input">
             <i class="fas fa-paperclip icon-fas"></i>
