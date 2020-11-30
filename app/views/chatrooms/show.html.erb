@@ -8,11 +8,45 @@
         <% @chatroom.messages.each do |message| %>
           <% if message.user == current_user %>
 
-          <div class="justify-content-end mb-4">
-            <div class="msg-content-send">
-              <span class="black"><%= message.content %></span>
-              <span class="black name-position-send"><%= message.user.username %></span>
+            <% if  message.photos.attached? %>
+            <div class="justify-content-end link-msg">
+            <%= link_to message_path do %>
+            <div class="card mb-4 card-img-send" style="width: 14rem;">
+                <%= cl_image_tag message.photos.first.key, class:"card-img-top img-send"%>
+                <div class="card-body">
+                  <p class="card-text"><%= message.content %></p>
+                </div>
+                <span class="black name-position-send"><%= message.user.username %></span>
+              </div>
+              <% end %>
             </div>
+
+            <% else %>
+
+            <div class="justify-content-end mb-4">
+              <div class="msg-content-send">
+                <span class="black"><%= message.content %></span>
+                <span class="black name-position-send"><%= message.user.username %></span>
+              </div>
+            </div>
+
+            <% end %>
+
+          <% else %>
+
+
+          <% if  message.photos.attached? %>
+
+          <div class="justify-content-start link-msg">
+            <%= link_to message_path do %>
+            <div class="card mb-4 card-img-receive" style="width: 14rem;">
+              <%= cl_image_tag message.photos.first.key, class:"card-img-top img-receive"%>
+              <div class="card-body">
+                <p class="card-text"><%= message.content %></p>
+              </div>
+              <span class="black name-position"><%= message.user.username %></span>
+            </div>
+            <% end %>
           </div>
 
           <% else %>
@@ -23,6 +57,8 @@
               <span class="black name-position"><%= message.user.username %></span>
             </div>
           </div>
+
+          <% end %>
 
           <% end %>
         <% end  %>
