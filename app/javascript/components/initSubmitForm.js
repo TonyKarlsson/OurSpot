@@ -7,10 +7,8 @@ const submitForm = () => {
     submit.addEventListener('click', (event) => {
 
       form.submit();
-
     });
   };
 };
-
 
 export { submitForm }

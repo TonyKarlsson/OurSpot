@@ -11,4 +11,6 @@ class ChatroomsController < ApplicationController
     # raise
     authorize @chatroom
   end
+
+
 end

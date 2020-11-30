@@ -154,5 +154,35 @@ textarea.text-input {
 }
 
 
+.card-img-send {
+  border-radius: 15px !important;
+  border: 1px solid #fecbcf;
+}
+
+.card-img-receive {
+  border-radius: 15px !important;
+  border: 1px solid #132743;
+}
+
+.card-img-top {
+  object-position: 50% 50%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.img-send {
+  border-bottom: 2px solid #fecbcf;
+}
 
 
+
+.img-receive {
+  border-bottom: 2px solid #132743;
+}
+
+.link-msg a {
+  color: black;
+  &:hover {
+    color: black;
+  }
+}
