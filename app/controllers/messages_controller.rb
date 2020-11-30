@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   def show
     @message = Message.find(params[:id])
     authorize @message
+    map_marker
   end
 
   def new
@@ -13,11 +14,15 @@ class MessagesController < ApplicationController
   end
 
   def create
-    # friend2 = params[:friend2].nil? ? params[:chatroom][:friend2] : params[:friend2]
+    # @coordinates = []
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
     @chatroom = Chatroom.find(params[:id]) if params[:id]
+    # @coordinates << @message.latitude
+    # @coordinates << @message.longitude
+    @address = Geocoder.search([@message.latitude, @message.longitude])
+    @message.address = @address.first.address
     authorize @message
       if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
         @message.chatroom = @chatroom
@@ -42,10 +47,16 @@ class MessagesController < ApplicationController
     redirect_to messages_path
   end
 
-
   private
 
+  def map_marker
+    @markers = [{
+      lat: @message.latitude,
+      lng: @message.longitude
+      }]
+  end
+
   def message_params
-    params.require(:message).permit(:content, :longitude, :latitude, photos: [])
+    params.require(:message).permit(:content, :longitude, :latitude, :address, photos: [])
   end
 end
