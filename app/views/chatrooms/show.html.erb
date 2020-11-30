@@ -6,6 +6,30 @@
     <div class="text-body">
 
         <% @chatroom.messages.each do |message| %>
+          <% message_service = UserInMessageRadius.new(current_user, @remote_ip, message) %>
+          <% can_view = message_service.perform %>
+          <% if can_view %>
+              <p>message opened</p>
+              <% if message.user == current_user %>
+
+              <div class="justify-content-end mb-4">
+                <div class="msg-content-send">
+                  <span class="black"><%= message.content %></span>
+                  <span class="black name-position-send"><%= message.user.username %></span>
+                </div>
+              </div>
+
+              <% else %>
+
+              <div class="justify-content-start mb-4">
+                <div class="msg-content">
+                  <span class="black"><%= message.content %></span>
+                  <span class="black name-position"><%= message.user.username %></span>
+                </div>
+              </div>
+
+              <% end %>
+          <% else %>
           <% if message.user == current_user %>
 
           <div class="justify-content-end mb-4">
@@ -25,6 +49,9 @@
           </div>
 
           <% end %>
+              <p>not close to location</p>
+          <% end %>
+
         <% end  %>
 
     </div>
@@ -40,7 +67,8 @@
 
         <%= f.input :content, label: false, wrapper_html: { class: 'text-area-input' } ,input_html: { class: 'text-input' } %>
         <%= hidden_field_tag :friend2, @chatroom.friend2.id %>
-
+        <%= f.hidden_field :longitude %>
+        <%= f.hidden_field :latitude %>
 
         <div class="submit">
           <label for="submit-btn">
@@ -48,7 +76,6 @@
           </label>
           <%= f.submit "Save"%>
         </div>
-
       <% end %>
 
     </div>
