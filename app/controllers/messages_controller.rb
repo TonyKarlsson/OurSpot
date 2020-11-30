@@ -26,15 +26,15 @@ class MessagesController < ApplicationController
     @message.address = @address.first.address
 
     authorize @message
-      if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
-        @message.chatroom = @chatroom
-      else
-        @chatroom = Chatroom.new
-        @chatroom.friend1 = current_user
-        @chatroom.friend2 = User.find(params[:friend2])
-        @chatroom.save!
-        @message.chatroom = @chatroom
-      end
+    if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
+      @message.chatroom = @chatroom
+    else
+      @chatroom = Chatroom.new
+      @chatroom.friend1 = current_user
+      @chatroom.friend2 = User.find(params[:friend2])
+      @chatroom.save!
+      @message.chatroom = @chatroom
+    end
     if @message.save!
       redirect_to chatroom_path(@chatroom)
     else

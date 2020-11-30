@@ -36,25 +36,25 @@ tony.accept_request(dareos)
 
 
 puts "new Users created"
-# User.create(email: "blah@ourspot.com", password:"123456")
-# User.create(email: "trash@ourspot.com", password:"123456")
-# User.create(email: "nothing@ourspot.com", password:"123456")
+# # User.create(email: "blah@ourspot.com", password:"123456")
+# # User.create(email: "trash@ourspot.com", password:"123456")
+# # User.create(email: "nothing@ourspot.com", password:"123456")
 
-Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.first)
-Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"MichaelD"))
-Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"VasilH"))
-Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"Dareos"))
-Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"Yaniv"))
-# Chatroom.create(friend1:User.last, friend2:User.find_by(username:"Dareos"))
-# Chatroom.create(friend1:User.last, friend2:User.find_by(username:"Yaniv"))
-puts "new Chatrooms created"
+# Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.first)
+# Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"MichaelD"))
+# Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"VasilH"))
+# Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"Dareos"))
+# Chatroom.create(friend1:User.find_by(username:"TonyK"), friend2:User.find_by(username:"Yaniv"))
+# # Chatroom.create(friend1:User.last, friend2:User.find_by(username:"Dareos"))
+# # Chatroom.create(friend1:User.last, friend2:User.find_by(username:"Yaniv"))
+# puts "new Chatrooms created"
 
-Message.create(chatroom:Chatroom.first, content:"Dude the pizza here is out of this world!", user:User.first)
-Message.create(chatroom:Chatroom.first, content:"OMG, just tried it now, amazing recommendation!", user:User.find_by(username:"TonyK"))
-Message.create(chatroom:Chatroom.second, content:"This bar has the best Jazz music in town, thank me later", user:User.find_by(username:"TonyK"))
-Message.create(chatroom:Chatroom.second, content:"Thanks bud, having a great time here!", user:User.find_by(username:"MichaelD"))
-Message.create(chatroom:Chatroom.last, content:"The best burger in town, hands down!", user:User.find_by(username:"TonyK"))
-puts "new Messages created"
+# Message.create(chatroom:Chatroom.first, content:"Dude the pizza here is out of this world!", user:User.first)
+# Message.create(chatroom:Chatroom.first, content:"OMG, just tried it now, amazing recommendation!", user:User.find_by(username:"TonyK"))
+# Message.create(chatroom:Chatroom.second, content:"This bar has the best Jazz music in town, thank me later", user:User.find_by(username:"TonyK"))
+# Message.create(chatroom:Chatroom.second, content:"Thanks bud, having a great time here!", user:User.find_by(username:"MichaelD"))
+# Message.create(chatroom:Chatroom.last, content:"The best burger in town, hands down!", user:User.find_by(username:"TonyK"))
+# puts "new Messages created"
 
 
 

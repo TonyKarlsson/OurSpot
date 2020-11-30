@@ -6,67 +6,70 @@
     <div class="text-body">
 
         <% @chatroom.messages.each do |message| %>
+          <% message_service = UserInMessageRadius.new(current_user, @remote_ip, message) %>
+          <% can_view = message_service.perform %>
           <% if message.user == current_user %>
 
             <% if  message.photos.attached? %>
-            <div class="justify-content-end link-msg">
-            <%= link_to message_path do %>
-            <div class="card mb-4 card-img-send" style="width: 14rem;">
-                <%= cl_image_tag message.photos.first.key, class:"card-img-top img-send"%>
-                <div class="card-body">
-                  <p class="card-text"><%= message.content %></p>
-                </div>
-                <span class="black name-position-send"><%= message.user.username %></span>
+              <div class="justify-content-end link-msg">
+                <%= link_to message_path do %>
+                  <div class="card mb-4 card-img-send" style="width: 14rem;">
+                      <%= cl_image_tag message.photos.first.key, class:"card-img-top img-send"%>
+                      <div class="card-body">
+                        <p class="card-text"><%= message.content %></p>
+                      </div>
+                      <span class="black name-position-send"><%= message.user.username %></span>
+                  </div>
+                <% end %>
               </div>
-              <% end %>
-            </div>
 
             <% else %>
 
-            <div class="justify-content-end mb-4">
-              <div class="msg-content-send">
-                <span class="black"><%= message.content %></span>
-                <span class="black name-position-send"><%= message.user.username %></span>
+              <div class="justify-content-end mb-4">
+                <div class="msg-content-send">
+                  <span class="black"><%= message.content %></span>
+                  <span class="black name-position-send"><%= message.user.username %></span>
+                </div>
               </div>
-            </div>
 
             <% end %>
 
           <% else %>
 
+            <% if can_view %>
+              <% if  message.photos.attached? %>
 
-          <% if  message.photos.attached? %>
+                <div class="justify-content-start link-msg">
+                  <%= link_to message_path do %>
+                    <div class="card mb-4 card-img-receive" style="width: 14rem;">
+                      <%= cl_image_tag message.photos.first.key, class:"card-img-top img-receive"%>
+                      <div class="card-body">
+                        <p class="card-text"><%= message.content %></p>
+                      </div>
+                      <span class="black name-position"><%= message.user.username %></span>
+                    </div>
+                  <% end %>
+                </div>
 
-          <div class="justify-content-start link-msg">
-            <%= link_to message_path do %>
-            <div class="card mb-4 card-img-receive" style="width: 14rem;">
-              <%= cl_image_tag message.photos.first.key, class:"card-img-top img-receive"%>
-              <div class="card-body">
-                <p class="card-text"><%= message.content %></p>
-              </div>
-              <span class="black name-position"><%= message.user.username %></span>
-            </div>
-            <% end %>
-          </div>
+              <% else %>
 
-          <% else %>
-
-          <div class="justify-content-start mb-4">
-            <div class="msg-content">
-              <span class="black"><%= message.content %></span>
-              <span class="black name-position"><%= message.user.username %></span>
-            </div>
-          </div>
-
-          <% end %>
-
-          <% end %>
-        <% end  %>
+                <div class="justify-content-start mb-4">
+                  <div class="msg-content">
+                    <span class="black"><%= message.content %></span>
+                    <span class="black name-position"><%= message.user.username %></span>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <p>not close to location</p>
+            <% end  %>
+          <% end  %>
+        <% end %>
 
     </div>
     <div class="new-message">
 
-      <%= simple_form_for @message, html: { class: "message-new"} do |f| %>
+      <%= simple_form_for @message, remote: true, html: { class: "message-new"} do |f| %>
         <div class="image-upload">
           <label for="file-input">
             <i class="fas fa-paperclip icon-fas"></i>
@@ -76,8 +79,9 @@
 
         <%= f.input :content, label: false, wrapper_html: { class: 'text-area-input' } ,input_html: { class: 'text-input' } %>
         <%= hidden_field_tag :friend2, @chatroom.friend2.id %>
+        <%= f.hidden_field :longitude %>
+        <%= f.hidden_field :latitude %>
         <%= hidden_field_tag :chatroom_id, @chatroom.id %>
-
 
         <div class="submit">
           <label for="submit-btn">
@@ -85,7 +89,6 @@
           </label>
           <%= f.submit "Save"%>
         </div>
-
       <% end %>
 
     </div>
