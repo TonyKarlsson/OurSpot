@@ -21,6 +21,9 @@ class MessagesController < ApplicationController
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
+    user_location = JSON.parse(open("http://iplocate.io/api/lookup/#{@ip}").read)
+    @message.latitude = user_location['latitude']
+    @message.longitude = user_location['longitude']
     @chatroom = Chatroom.find(params[:id]) if params[:id]
     @address = Geocoder.search([@message.latitude, @message.longitude])
     authorize @message
@@ -61,6 +64,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, :longitude, :latitude, :address, photos: [])
+    params.require(:message).permit(:content, photos: [])
   end
 end
