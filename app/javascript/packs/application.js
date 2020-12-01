@@ -39,5 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initGetCoordinates();
   initMapbox();
-  initChatroomCable();
+  // initChatroomCable();
 });
