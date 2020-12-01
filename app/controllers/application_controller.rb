@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def ip_print
     if Rails.env.production?
-      @ip = current_user.current_sign_in_ip
+      @ip = current_user.current_sign_in_ip if current_user
       puts "Ip Address: #{@ip}"
     else
       @ip = Net::HTTP.get(URI.parse('http://checkip.amazonaws.com/')).squish
