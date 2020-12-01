@@ -65,7 +65,7 @@
   justify-content: start;
 }
 
-.msg-content {
+.msg-content-receive {
   margin-top: auto;
   margin-bottom: auto;
   border-radius: 15px;
@@ -77,7 +77,7 @@
 }
 
 
-.name-position {
+.name-position-receive {
     position: absolute;
     left: 0;
     bottom: -15px;
@@ -167,17 +167,12 @@ textarea.text-input {
 .card-img-top {
   object-position: 50% 50%;
   object-fit: cover;
-  border-radius: 15px;
+  border-top-left-radius: 15px !important;
+  border-top-right-radius: 15px !important;
 }
 
-.img-send {
-  border-bottom: 2px solid #fecbcf;
-}
-
-
-
-.img-receive {
-  border-bottom: 2px solid #132743;
+.card-body {
+  padding: 0.6rem !important;
 }
 
 .link-msg a {

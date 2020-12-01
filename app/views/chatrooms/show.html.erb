@@ -3,68 +3,13 @@
       <img class="avatar-medium ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
      <h4 class="ml-4 mt-3 mb-2" style="color: white;"><%=@chatroom.recipient(current_user)%></h4>
     </div>
-    <div class="text-body">
+    <div class="text-body" data-chatroom-id="<%= @chatroom.id %>">
 
-        <% @chatroom.messages.each do |message| %>
-          <% message_service = UserInMessageRadius.new(current_user, @remote_ip, message) %>
-          <% can_view = message_service.perform %>
-          <% if message.user == current_user %>
 
-            <% if  message.photos.attached? %>
-              <div class="justify-content-end link-msg">
-                <%= link_to message_path do %>
-                  <div class="card mb-4 card-img-send" style="width: 14rem;">
-                      <%= cl_image_tag message.photos.first.key, class:"card-img-top img-send"%>
-                      <div class="card-body">
-                        <p class="card-text"><%= message.content %></p>
-                      </div>
-                      <span class="black name-position-send"><%= message.user.username %></span>
-                  </div>
-                <% end %>
-              </div>
 
-            <% else %>
+          <%= render 'messages/message' %>
 
-              <div class="justify-content-end mb-4">
-                <div class="msg-content-send">
-                  <span class="black"><%= message.content %></span>
-                  <span class="black name-position-send"><%= message.user.username %></span>
-                </div>
-              </div>
 
-            <% end %>
-
-          <% else %>
-
-            <% if can_view %>
-              <% if  message.photos.attached? %>
-
-                <div class="justify-content-start link-msg">
-                  <%= link_to message_path do %>
-                    <div class="card mb-4 card-img-receive" style="width: 14rem;">
-                      <%= cl_image_tag message.photos.first.key, class:"card-img-top img-receive"%>
-                      <div class="card-body">
-                        <p class="card-text"><%= message.content %></p>
-                      </div>
-                      <span class="black name-position"><%= message.user.username %></span>
-                    </div>
-                  <% end %>
-                </div>
-
-              <% else %>
-
-                <div class="justify-content-start mb-4">
-                  <div class="msg-content">
-                    <span class="black"><%= message.content %></span>
-                    <span class="black name-position"><%= message.user.username %></span>
-                  </div>
-                </div>
-              <% end %>
-            <% else %>
-              <p>not close to location</p>
-            <% end  %>
-          <% end  %>
-        <% end %>
 
     </div>
     <div class="new-message">
@@ -82,6 +27,8 @@
         <%= f.hidden_field :longitude %>
         <%= f.hidden_field :latitude %>
         <%= hidden_field_tag :chatroom_id, @chatroom.id %>
+        <%= f.hidden_field :longitude%>
+        <%= f.hidden_field :latitude%>
 
         <div class="submit">
           <label for="submit-btn">

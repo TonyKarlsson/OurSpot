@@ -23,7 +23,7 @@ class MessagesController < ApplicationController
     # @coordinates << @message.latitude
     # @coordinates << @message.longitude
     @address = Geocoder.search([@message.latitude, @message.longitude])
-    @message.address = @address.first.address
+    #@message.address = @address.first.address
 
     authorize @message
     if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
@@ -37,6 +37,11 @@ class MessagesController < ApplicationController
     end
     if @message.save!
       redirect_to chatroom_path(@chatroom)
+
+      ChatroomChannel.broadcast_to(
+        @chatroom,
+        render_to_string(partial: "message", locals: { content: @message })
+      )
     else
       render :new
     end
