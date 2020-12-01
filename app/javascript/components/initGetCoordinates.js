@@ -17,6 +17,7 @@ const initGetCoordinates = () => {
   }
 
   if (submit) {
+    console.log("Hello")
     submit.addEventListener("submit", (event) => {
       event.preventDefault();
       getLocation();

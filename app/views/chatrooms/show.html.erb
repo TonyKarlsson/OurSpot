@@ -6,13 +6,15 @@
     <div class="text-body" data-chatroom-id="<%= @chatroom.id %>">
 
 
+
           <%= render 'messages/message' %>
+
 
 
     </div>
     <div class="new-message">
 
-      <%= simple_form_for @message, html: { class: "message-new"} do |f| %>
+      <%= simple_form_for @message, remote: true, html: { class: "message-new"} do |f| %>
         <div class="image-upload">
           <label for="file-input">
             <i class="fas fa-paperclip icon-fas"></i>
@@ -22,10 +24,11 @@
 
         <%= f.input :content, label: false, wrapper_html: { class: 'text-area-input' } ,input_html: { class: 'text-input' } %>
         <%= hidden_field_tag :friend2, @chatroom.friend2.id %>
+        <%= f.hidden_field :longitude %>
+        <%= f.hidden_field :latitude %>
         <%= hidden_field_tag :chatroom_id, @chatroom.id %>
         <%= f.hidden_field :longitude%>
         <%= f.hidden_field :latitude%>
-
 
         <div class="submit">
           <label for="submit-btn">
@@ -33,7 +36,6 @@
           </label>
           <%= f.submit "Save"%>
         </div>
-
       <% end %>
 
     </div>
