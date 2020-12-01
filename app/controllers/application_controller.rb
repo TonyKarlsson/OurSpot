@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   include Pundit
+  before_action :authenticate_user!
+  before_action :ip_print
+
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
@@ -16,5 +18,15 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def ip_print
+    if Rails.env.production?
+      @ip = request.remote_ip
+      puts "Ip Address: #{request.remote_ip}"
+    else
+      @ip = Net::HTTP.get(URI.parse('http://checkip.amazonaws.com/')).squish
+      puts "Ip Address: #{@ip}"
+    end
   end
 end

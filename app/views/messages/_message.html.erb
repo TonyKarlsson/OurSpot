@@ -1,5 +1,5 @@
 
-<% message_service = UserInMessageRadius.new(current_user, @remote_ip, message) %>
+<% message_service = UserInMessageRadius.new(current_user, @ip, message) %>
 <% can_view = message_service.perform %>
 
 <% if message.user == current_user %>

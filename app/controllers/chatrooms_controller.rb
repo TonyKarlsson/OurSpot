@@ -7,7 +7,6 @@ class ChatroomsController < ApplicationController
     @message = Message.new
     @chatroom = Chatroom.find(params[:id])
     # raise
-    @remote_ip = request.remote_ip
     # raise
     authorize @chatroom
   end
