@@ -2,8 +2,6 @@ const messageForm = document.getElementById("new_message");
 const newMessage = document.querySelector('#message-btn');
 
 const doSomethingWhenLocationIsReady = (latitude, longitude) => {
-
-
   if (messageForm) {
     document.getElementById("message_latitude").value = latitude;
     document.getElementById("message_longitude").value = longitude;
