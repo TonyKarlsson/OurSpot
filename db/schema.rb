@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_151526) do
+ActiveRecord::Schema.define(version: 2020_12_01_165617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_12_01_151526) do
     t.float "longitude"
     t.float "latitude"
     t.text "content"
-    t.boolean "read"
+    t.boolean "read", default: false
     t.bigint "chatroom_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
