@@ -31,20 +31,13 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initGetCoordinates } from '../components/initGetCoordinates';
-import { submitForm } from '../components/initSubmitForm';
 import { initChatroomCable } from '../channels/chatroom_channel';
-
-document.addEventListener('turbolinks:load', () => {
-  submitForm();
-  // Call your functions here, e.g:
-  // initSelect2();
-  initGetCoordinates();
-
-  initChatroomCable();
-});
-
 import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  initGetCoordinates();
   initMapbox();
-})
+  initChatroomCable();
+});
