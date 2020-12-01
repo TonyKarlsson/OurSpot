@@ -5,15 +5,16 @@ class MessagePolicy < ApplicationPolicy
     end
   end
 
-    def show?
-      record.user == user
+  def show?
+    record.user == user
 
-    end
-
-    def destroy?
-      record.user == user
-   end
-  def create?
-    return true
   end
+
+  def destroy?
+    record.user == user
+  end
+
+ def create?
+   return true
+ end
 end

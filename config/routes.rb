@@ -4,4 +4,7 @@ Rails.application.routes.draw do
 
   resources :messages, only: [:index, :show, :new, :create, :destroy]
   resources :chatrooms, only: [:index, :show]
+  resources :users, only: [:index]
+
+  put '/add_friend', to: 'users#add_friend', as: :add_friend
 end
