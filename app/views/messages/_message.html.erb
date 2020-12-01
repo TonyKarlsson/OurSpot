@@ -1,7 +1,7 @@
-
-<% message_service = UserInMessageRadius.new(current_user, @ip, message) %>
-<% can_view = message_service.perform %>
-
+<% if !message.read %>
+  <% message_service = UserInMessageRadius.new(current_user, @ip, message) %>
+  <% can_view = message_service.perform %>
+<% end %>
 <% if message.user == current_user %>
   <% justify = "end" %>
   <% send = "send" %>
@@ -10,7 +10,7 @@
   <% send = "receive" %>
 <% end %>
 
-<% if can_view || message.user == current_user %>
+<% if can_view || message.user == current_user || message.read%>
   <% if message.photos.attached? %>
     <div class="justify-content-<%=justify%> link-msg">
       <%= link_to message_path(message) do %>
