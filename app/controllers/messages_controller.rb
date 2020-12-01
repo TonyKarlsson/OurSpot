@@ -11,20 +11,18 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     authorize @message
+    @markers = [{
+      lat: params[:lat],
+      lng: params[:lng]
+    }]
   end
 
   def create
-    # @coordinates = []
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
-
     @chatroom = Chatroom.find(params[:id]) if params[:id]
-    # @coordinates << @message.latitude
-    # @coordinates << @message.longitude
     @address = Geocoder.search([@message.latitude, @message.longitude])
-    #@message.address = @address.first.address
-
     authorize @message
     if @chatroom || @chatroom = Chatroom.where(friend1: current_user, friend2: @friend2).first || @chatroom = Chatroom.where(friend2: current_user, friend1: @friend2).first
       @message.chatroom = @chatroom

@@ -21,5 +21,13 @@
           <%= link_to "Go back", root_path, class: "btn-message btn btn-success rounded-pill w-100"  %>
         </div>
     <% end %>
+
+    <div class="margin-from-navbar">
+      <div id="map"
+        style="width: 100%; height: 300px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
   </div>
 </div>
