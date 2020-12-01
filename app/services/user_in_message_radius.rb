@@ -13,8 +13,8 @@ class UserInMessageRadius
   private
 
   def distance_between
-    Geocoder::Calculations.distance_between(@request, "#{@message.latitude}, #{@message.longitude}")
-    # Geocoder::Calculations.distance_between("copenhagen", "#{@message.latitude}, #{@message.longitude}")
+    # Geocoder::Calculations.distance_between(@request, "#{@message.latitude}, #{@message.longitude}")
+    Geocoder::Calculations.distance_between("henriksdalsringen 27, Nacka, Stockholm", "#{@message.latitude}, #{@message.longitude}")
     # "59.3294, 18.0687"
   end
 end
