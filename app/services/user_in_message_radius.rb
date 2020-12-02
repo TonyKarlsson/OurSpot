@@ -7,10 +7,10 @@ class UserInMessageRadius
   end
 
   def perform
-   if distance_between < 5
-    @message.read = true
-    @message.save!
-   end
+    if distance_between < 5 && @user != @message.user
+      @message.read = true
+      @message.save!
+    end
   end
 
   private
