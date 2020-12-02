@@ -34,6 +34,24 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.profile-details
+{
+  display: flex;
+  align-items: center;
+}
+
+.profile-details p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: white;
+}
+
+.profile-box {
+  justify-content: space-between;
+  align-items: center;
+}
+
 .user-details p {
 margin-bottom: 4px;
 }

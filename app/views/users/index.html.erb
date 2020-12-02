@@ -1,0 +1,27 @@
+<div class="chat-container chat-background" style="background-image: url('https://images.unsplash.com/photo-1606235268286-cfc161fed099?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9');">
+  <div class="background-blur">
+   <ul class="list-unstyled margin-from-navbar">
+      <% @users.each do |user| %>
+        <li class="chat-card">
+          <div class="d-flex profile-box p-3">
+            <div class="profile-details">
+              <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/<%=rand(1..20)%>.jpg" alt="">
+              <p class="ml-3"><%= user.username %></p>
+            </div>
+            <% if current_user.pending_friends.include?(user) %>
+              <div>
+                <%= link_to "Pending", add_friend_path(user_id: user.id), method: :put, class:"btn btn-primary disabled" %>
+              </div>
+            <% else %>
+              <div>
+                <%= link_to "Add friend", add_friend_path(user_id: user.id), method: :put, class:"btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </li>
+    <!-- <div class="underline"></div> -->
+      <% end %>
+    </ul>
+  </div>
+</div>
+

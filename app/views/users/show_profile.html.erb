@@ -1,0 +1,38 @@
+<div class="profile-container">
+  <div class="profile-header" style="background-image: url(https://images.unsplash.com/photo-1606760130791-ed2f437a8c4e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80);">
+  </div>
+  <div class="section profile-content">
+    <div class="profile-content-container">
+      <div class="owner">
+        <div class="owner-avatar">
+          <img src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" alt="" class="img-circle img-align">
+        </div>
+        <div class="name">
+          <h4 class="title"><%= current_user.username %></h4>
+        </div>
+        <h4 class="text-left">Friend Requests</h4>
+        <div class="friend-wrap">
+          <% current_user.requested_friends.each do |friend| %>
+            <div class="d-flex friend-request">
+              <img src="https://images.unsplash.com/photo-1582214448344-4cb7e35711f7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80" alt="" class="avatar">
+              <span class="ml-3 text-big"><%= friend.username %></span class="ml-3">
+              <div class="d-flex friend-icons">
+<!--                 <i class="fas fa-check mr-3 accept"><%# current_user.accept_request(friend) %></i>
+                <i class="fas fa-times reject"><%# current_user.decline_request(friend) %></i> -->
+                <%= link_to accept_path(user_id: friend.id), method: :put, class:"black" do%>
+                  <i class="fas fa-check mr-3 accept"></i>
+                <% end %>
+                <%= link_to reject_path(user_id: friend.id), method: :put, class:"black" do%>
+                  <i class="fas fa-times reject"></i>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render 'shared/new_message_button' %>
+
