@@ -7,10 +7,10 @@
         <% end %>
         <%= f.input :content, wrapper_html: { class: 'text-area-icon' },  label: false%>
 
-        <div class="image-upload-icon mt-2 mb-2">
+          <!-- <div class="image-upload-icon mt-2 mb-2">
           <label for="file-input">
             <i class="fas fa-plus icon-fas rnd-fas"></i>
-          </label>
+          </label> -->
         <%= f.input :image, :as => :file, :input_html => {:onchange => "document.getElementById('uploaded-img').src = window.URL.createObjectURL(this.files[0])"}%>
         <img id="uploaded-img" alt="Your image" with="100px" height="100px">
       </div>
