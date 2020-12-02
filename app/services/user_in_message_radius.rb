@@ -18,9 +18,9 @@ class UserInMessageRadius
   def distance_between
     user_location = JSON.parse(open("http://iplocate.io/api/lookup/#{@request}").read)
     coordinates = [user_location['latitude'], user_location['longitude']]
-    Geocoder::Calculations.distance_between(coordinates, "#{@message.latitude}, #{@message.longitude}")
+    # Geocoder::Calculations.distance_between(coordinates, "#{@message.latitude}, #{@message.longitude}")
 
-    # Geocoder::Calculations.distance_between("henriksdalsringen 27, Nacka, Stockholm", "#{@message.latitude}, #{@message.longitude}")
+    Geocoder::Calculations.distance_between("london", "#{@message.latitude}, #{@message.longitude}")
     # "59.3294, 18.0687"
   end
 end
