@@ -33,8 +33,27 @@
   <% end  %>
 <% else %>
   <div class="justify-content-start mb-4">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">New Spot - Go here to view contents</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div id="map"
+                style="width: 100%; height: 500px;"
+                data-markers="<%= [{ lat: message.latitude, lng: message.longitude}].to_json %>"
+                data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="msg-content-receive">
-      <span class="black">You have a new spot.</span>
+      <span class="black" data-toggle="modal" data-target="#exampleModal">You have a new spot.</span>
       <span class="black name-position-receive"><%= message.user.username %></span>
     </div>
   </div>
