@@ -11,11 +11,9 @@
           <label for="file-input">
             <i class="fas fa-plus icon-fas rnd-fas"></i>
           </label>
-        <%= f.file_field :photos, multiple: true, id: "file-input"%>
+        <%= f.input :image, :as => :file, :input_html => {:onchange => "document.getElementById('uploaded-img').src = window.URL.createObjectURL(this.files[0])"}%>
+        <img id="uploaded-img" alt="Your image" with="100px" height="100px">
       </div>
-
-        <%#= f.hidden_field :longitude %>
-        <%#= f.hidden_field :latitude %>
         <div class="d-flex">
           <%= f.submit "Create spot", class: "btn-message btn btn-primary rounded-pill w-100 mr-4" %>
           <%= link_to "Go back", root_path, class: "btn-message btn btn-success rounded-pill w-100"  %>
