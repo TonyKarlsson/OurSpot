@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :chatrooms_as_friend2, source: :chatrooms, foreign_key: :friend2_id
   has_friendship
   validates :username, presence: true
+  has_one_attached :photo
 end

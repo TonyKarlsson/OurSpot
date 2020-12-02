@@ -17,6 +17,12 @@ michael = User.create(email: "michael@ourspot.com", password:"123456", username:
 tony = User.create(email: "tony@ourspot.com", password:"123456", username:"TonyK")
 dareos = User.create(email: "dareos@ourspot.com", password:"123456", username:"Dareos")
 yaniv = User.create(email: "yaniv@ourspot.com", password:"123456", username:"Yaniv")
+karen = User.create(email: "karen@ourspot.com", password:"123456", username:"karen")
+james = User.create(email: "james@ourspot.com", password:"123456", username:"james")
+harry = User.create(email: "harry@ourspot.com", password:"123456", username:"harry")
+
+
+
 sarmad.friend_request(tony) # Sarmad and Tony are friends
 sarmad.friend_request(michael)
 sarmad.friend_request(vasil)
