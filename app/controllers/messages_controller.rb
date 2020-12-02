@@ -11,19 +11,15 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     authorize @message
-    @markers = [{
-      lat: params[:lat],
-      lng: params[:lng]
-    }]
+    get_user_coordinates_from_ip
+    map_marker
   end
 
   def create
     @friend2 = User.find(params[:friend2])
     @message = Message.new(message_params)
     @message.user = current_user
-    user_location = JSON.parse(open("http://iplocate.io/api/lookup/#{@ip}").read)
-    @message.latitude = user_location['latitude']
-    @message.longitude = user_location['longitude']
+    get_user_coordinates_from_ip
     @chatroom = Chatroom.find(params[:id]) if params[:id]
     @address = Geocoder.search([@message.latitude, @message.longitude])
     authorize @message
@@ -55,6 +51,12 @@ class MessagesController < ApplicationController
   end
 
   private
+
+  def get_user_coordinates_from_ip
+    user_location = JSON.parse(open("http://iplocate.io/api/lookup/#{@ip}").read)
+    @message.latitude = user_location['latitude']
+    @message.longitude = user_location['longitude']
+  end
 
   def map_marker
     @markers = [{
