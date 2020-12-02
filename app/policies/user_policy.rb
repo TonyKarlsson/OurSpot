@@ -9,4 +9,16 @@ class UserPolicy < ApplicationPolicy
     user
   end
 
+  def show_profile?
+    record.id == user.id
+  end
+
+  def accept_friend?
+    true
+  end
+
+  def reject_friend?
+    true
+  end
+
 end
