@@ -3,4 +3,5 @@ class Message < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
   reverse_geocoded_by :longitude, :latitude
+  validates :longitude, :latitude, presence: true
 end
