@@ -19,7 +19,7 @@
           <div class="card-body">
             <p class="card-text"><%= message.content %></p>
           </div>
-          <span class="black name-position-<%=send%>"><%= message.user.username %></span>
+          <span class="name-position-<%=send%>"><%= message.user.username %></span>
         </div>
       <% end %>
       </div>
@@ -53,7 +53,9 @@
       </div>
     </div>
     <div class="msg-content-receive">
+
       <span class="black" data-toggle="modal" data-target="#exampleModal">You have a new spot. Tap here</span>
+
       <span class="name-position-receive"><%= message.user.username %></span>
     </div>
   </div>
