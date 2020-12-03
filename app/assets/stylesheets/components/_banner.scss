@@ -33,30 +33,30 @@
   font-size: 14px;
 }
 
-.btn-log-in {
-  background: #8644fc;
+.btn-main {
+  background: rgba(255,255,255, 0);
   font-size: 18px;
-  font-weight: bold;
-  color: white;
-  border: none;
+  font-weight: light;
+  color: white; 
+  border: 1px solid white;
   &:focus {
-    background: #8644fc;
+    background: rgba(255,255,255, 0); 
     font-size: 18px;
-    font-weight: bold;
     color: white;
-    border: none;
+    border: 1px solid white;
     box-shadow: none;
   }
 }
 
-.btn-log-in:hover {
+.btn-main:hover {
   color: white;
-  background: #8644fc;
-  border: none;
+  border: 1px solid white !important;
+  background: rgba(255,255,255, 0.1) !important;
 }
 
-.btn-log-in:active {
-  color: white !important;
-  background: #8644fc !important;
-  border: none !important;
+.btn-main:active {
+  color: rgba(255,255,255, 0.1) !important;
+  background: rgba(255,255,255, 0.1) !important;
+  border: 1px solid rgba(255,255,255, 0.1) !important;
+  box-shadow: none !important;
 }

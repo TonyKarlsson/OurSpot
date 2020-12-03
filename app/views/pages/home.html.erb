@@ -4,9 +4,9 @@
     <p>Make our mark</p>
     <div class="mt-4 log-in">
       <% if current_user %>
-        <%= link_to "See my spots", chatrooms_path, class: "btn btn-success rounded-pill btn-log-in w-40 py-2 px-3"  %>
+        <%= link_to "See my spots", chatrooms_path, class: "btn btn-main rounded-pill btn-log-in w-40 py-2 px-3"  %>
       <% else %>
-        <%= link_to "Log In", new_user_session_path, class: "btn btn-success rounded-pill w-50 btn-log-in" %>
+        <%= link_to "Log In", new_user_session_path, class: "btn btn-main rounded-pill w-50 btn-log-in" %>
         <span class="white my-2">or</span>
         <div class="sign-up w-100">
           <span class="white">New to OurSpot?</span> <%= link_to new_user_registration_path, class: "white"  do%>
