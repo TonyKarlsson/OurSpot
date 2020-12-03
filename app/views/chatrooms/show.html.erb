@@ -1,6 +1,13 @@
   <div class="text-container">
     <div class="header d-flex margin-from-navbar">
-      <img class="avatar-medium ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt="">
+      <% if current_user == @chatroom.friend1 && @chatroom.friend2.photo.attached? %>
+        <%= cl_image_tag @chatroom.friend2.photo.key, class: "avatar-medium ml-3 mt-3 mb-3" %>
+      <% elsif current_user == @chatroom.friend2 && @chatroom.friend1.photo.attached? %>
+        <%= cl_image_tag @chatroom.friend1.photo.key, class: "avatar-medium ml-3 mt-3 mb-3" %>
+      <% else %>
+          <img class="avatar-medium ml-3 mt-3 mb-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+      <% end %>
+      <!-- <img class="avatar-medium ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt=""> -->
      <h4 class="ml-4 mt-3 mb-2" style="color: white;"><%=@chatroom.recipient(current_user)%></h4>
     </div>
     <div class="text-body" data-chatroom-id="<%= @chatroom.id %>">

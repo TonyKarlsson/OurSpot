@@ -8,7 +8,13 @@
       <li class="chat-card">
         <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
         <div class="d-flex p-3">
-          <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/<%=rand(1..20)%>.jpg" alt="">
+            <% if current_user == chatroom.friend1 && chatroom.friend2.photo.attached? %>
+              <%= cl_image_tag chatroom.friend2.photo.key, class: "avatar" %>
+            <% elsif current_user == chatroom.friend2 && chatroom.friend1.photo.attached? %>
+              <%= cl_image_tag chatroom.friend1.photo.key, class: "avatar" %>
+            <% else %>
+                <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+            <% end %>
           <div class="user-details ml-3">
             <%  if current_user == chatroom.friend1  %>
             <p><%= chatroom.friend2.username %></p>
