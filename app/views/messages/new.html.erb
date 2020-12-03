@@ -12,21 +12,20 @@
             <label for="file-input">
               <i class="fas fa-plus icon-fas rnd-fas"></i>
             </label> -->
-          <%= f.input :image, :as => :file, :input_html => {:onchange => "document.getElementById('uploaded-img').src = window.URL.createObjectURL(this.files[0])"}%>
-          <img id="uploaded-img" alt="Your image" width="100%" height="100px">
-    </div>
-      <div class="d-flex">
-        <%= link_to "Cancel", root_path, class: "btn-main btn btn-success rounded-pill w-100 mr-4"  %>
-        <%= f.submit "Create spot", class: "btn-main btn btn-primary rounded-pill w-100" %>
-      </div>
-    <% end %>
-      <div class="margin-from-navbar">
-        <div id="map"
-          style="width: 100%; height: 300px; border-radius: 15px;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          <%= f.input :photo, :as => :file%>
+          <div class="d-flex">
+            <%#= link_to "Cancel", root_path, class: "btn btn-main btn-success rounded-pill w-100 mr-4"  %>
+            <%= f.submit "Create spot", class: "btn btn-primary rounded-pill w-100 my-3" %>
+         </div>
+         <div id="map"
+            style="width: 100%; height: 200px; border-radius: 15px;"
+            data-markers="<%= @markers.to_json %>"
+            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
         </div>
-      </div>
     </div>
+    <% end %>
+    </div>
+    <%= render 'shared/new_message_button' %>
 </div>
-
+<!-- btn-main -->
+<!-- btn-main -->
