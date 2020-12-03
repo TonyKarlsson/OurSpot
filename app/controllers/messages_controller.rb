@@ -1,4 +1,5 @@
 require 'open-uri'
+
 class MessagesController < ApplicationController
   def index
   end
