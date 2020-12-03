@@ -3,7 +3,7 @@
 }
 
 .profile-header {
-  min-height: 30vh;
+  min-height: 28vh;
   background-color: #b2afab;
   background-position: 50% 50%;
   background-size: cover;
@@ -14,6 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
 }
 
 .white {
@@ -43,7 +44,10 @@
 .section {
   padding: 70px 0;
   background-color: #fff;
-  height: 70vh;
+  height: 69vh;
+  margin: -35px 0 0 0;
+  border-top-left-radius: 35px;
+  border-top-right-radius: 35px;
 }
 
 .profile-content-container {
@@ -113,14 +117,18 @@
 }
 
 .accept {
-  font-size: 24px;
+  font-size: 30px;
+  color: #5aa469;
 }
 
 .reject {
-  font-size: 24px;
+  font-size: 30px;
+  color: #f05454;
 }
 
-
+.yellow-text {
+  color: $yellow;
+}
 
 
 
