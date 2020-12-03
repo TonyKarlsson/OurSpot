@@ -1,5 +1,5 @@
   <div class="text-container">
-    <div class="header d-flex margin-from-navbar">
+    <div class="header d-flex">
       <% if current_user == @chatroom.friend1 && @chatroom.friend2.photo.attached? %>
         <%= cl_image_tag @chatroom.friend2.photo.key, class: "avatar-medium ml-3 mt-3 mb-3" %>
       <% elsif current_user == @chatroom.friend2 && @chatroom.friend1.photo.attached? %>

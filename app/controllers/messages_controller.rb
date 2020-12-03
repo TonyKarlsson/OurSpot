@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class MessagesController < ApplicationController
   def index
   end
@@ -53,7 +55,7 @@ class MessagesController < ApplicationController
   private
 
   def get_user_coordinates_from_ip
-    user_location = JSON.parse(open("http://iplocate.io/api/lookup/#{@ip}").read)
+    user_location = JSON.parse(URI.open("http://iplocate.io/api/lookup/#{@ip}").read)
     @message.latitude = user_location['latitude']
     @message.longitude = user_location['longitude']
   end
