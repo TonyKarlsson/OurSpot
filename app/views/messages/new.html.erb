@@ -13,14 +13,13 @@
               <i class="fas fa-plus icon-fas rnd-fas"></i>
             </label> -->
           <%= f.input :image, :as => :file, :input_html => {:onchange => "document.getElementById('uploaded-img').src = window.URL.createObjectURL(this.files[0])"}%>
-          <img id="uploaded-img" alt="Your image" with="100px" height="100px">
-        </div>
-          <div class="d-flex">
-            <%= link_to "Cancel", root_path, class: "btn-main btn btn-success rounded-pill w-100 mr-4"  %>
-            <%= f.submit "Create spot", class: "btn-main btn btn-primary rounded-pill w-100" %>
-          </div>
-      <% end %>
-
+          <img id="uploaded-img" alt="Your image" width="100%" height="100px">
+    </div>
+      <div class="d-flex">
+        <%= link_to "Cancel", root_path, class: "btn-main btn btn-success rounded-pill w-100 mr-4"  %>
+        <%= f.submit "Create spot", class: "btn-main btn btn-primary rounded-pill w-100" %>
+      </div>
+    <% end %>
       <div class="margin-from-navbar">
         <div id="map"
           style="width: 100%; height: 300px; border-radius: 15px;"
@@ -29,5 +28,5 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
+
