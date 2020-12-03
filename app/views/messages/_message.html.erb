@@ -27,7 +27,7 @@
     <div class="justify-content-<%=justify%> mb-4">
       <div class="msg-content-<%=send%>">
         <span class="black"><%= message.content %></span>
-        <span class="black name-position-<%=send%>"><%= message.user.username %></span>
+        <span class="name-position-<%=send%>"><%= message.user.username %></span>
       </div>
     </div>
   <% end  %>
@@ -37,7 +37,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">New Spot - Go here to view contents</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New Spot - Go here to view message!</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -53,8 +53,8 @@
       </div>
     </div>
     <div class="msg-content-receive">
-      <span class="black" data-toggle="modal" data-target="#exampleModal">You have a new spot.</span>
-      <span class="black name-position-receive"><%= message.user.username %></span>
+      <span class="black" data-toggle="modal" data-target="#exampleModal">You have a new spot. Tap here</span>
+      <span class="name-position-receive"><%= message.user.username %></span>
     </div>
   </div>
 <% end %>

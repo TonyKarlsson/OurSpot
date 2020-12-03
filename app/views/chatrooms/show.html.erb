@@ -1,3 +1,4 @@
+<div class="background">
   <div class="text-container">
     <div class="header d-flex">
       <% if current_user == @chatroom.friend1 && @chatroom.friend2.photo.attached? %>
@@ -35,7 +36,13 @@
         <%= hidden_field_tag :chatroom_id, @chatroom.id %>
         <%#= f.hidden_field :longitude%>
         <%#= f.hidden_field :latitude%>
-        <%= f.submit "send" %>
+        <%#= f.submit "send" label %>
+        <%#= f.button :submit do %>
+       <%= button_tag type: 'submit', class: "submit-none" do %>
+           <i class="fas fa-paper-plane icon-fas" aria-hidden="true"></i>
+       <% end %>
+          <!-- <i class="fas fa-paper-plane icon-fas" id="btn"></i> -->
+        <%# end %>
       <!--   <div class="submit">
           <label for="submit-btn">
             <i class="fas fa-paper-plane icon-fas" id="btn"></i>
@@ -46,5 +53,6 @@
       <% end %>
 
     </div>
+    </div>
+    <%= render 'shared/new_message_button' %>
   </div>
-
