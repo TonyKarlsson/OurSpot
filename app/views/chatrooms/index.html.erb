@@ -1,37 +1,58 @@
-
-<div class="chat-container chat-background" style="background-image: url('https://images.unsplash.com/photo-1606235268286-cfc161fed099?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9');">
-  <div class="background-blur">
-    <ul class="list-unstyled margin-from-navbar">
-
-      <% @chatrooms.each do |chatroom| %>
-
-      <li class="chat-card">
-        <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
-        <div class="d-flex p-3">
+<div class="header header-index d-flex">
+  <div class="img-icon-separate">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar-sm" %>
+    <% else %>
+      <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+    <% end %>
+    <i class="fas fa-search white icon-search"></i>
+  </div>
+  <h4 style="color: white;" class="my-3">My Spots</h4>
+</div>
+<div class="chat-container chat-background pt-2">
+  <ul class="list-unstyled">
+    <% @chatrooms.each do |chatroom| %>
+    <li class="chat-card">
+      <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
+        <div class="d-flex p-3 centered">
             <% if current_user == chatroom.friend1 && chatroom.friend2.photo.attached? %>
-              <%= cl_image_tag chatroom.friend2.photo.key, class: "avatar" %>
+              <%= cl_image_tag chatroom.friend2.photo.key, class: "avatar-sm" %>
             <% elsif current_user == chatroom.friend2 && chatroom.friend1.photo.attached? %>
-              <%= cl_image_tag chatroom.friend1.photo.key, class: "avatar" %>
+              <%= cl_image_tag chatroom.friend1.photo.key, class: "avatar-sm" %>
             <% else %>
-                <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+                <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
             <% end %>
-          <div class="user-details ml-3">
+            <div class="user-details ml-3">
             <%  if current_user == chatroom.friend1  %>
-            <p><%= chatroom.friend2.username %></p>
+              <p class="black bold-text"><%= chatroom.friend2.username %></p>
             <% else %>
-            <p><%= chatroom.friend1.username %></p>
+              <p class="black bold-text"><%= chatroom.friend1.username %></p>
             <% end %>
-            <h4>📍 Spotted here</h4>
+
+            <%  if current_user == chatroom.friend1  %>
+            <%# raise %>
+              <% last_message = chatroom.friend2.messages.last %>
+                <% if last_message.class == Message && !last_message.read %>
+                  <h4 class="black">You have a new spot</h4>
+                <% else %>
+                  <p class="black opacity-text"><%= chatroom.friend2.messages.last.content %></p>
+                <% end %>
+            <% else %>
+              <% last_message = chatroom.friend1.messages.last %>
+                <% if last_message.class == Message && !last_message.read  %>
+                  <h4 class="black">You have a new spot</h4>
+                <% else %>
+                  <p class="black opacity-text"><%= chatroom.friend1.messages.last.content %></p>
+                <% end %>
+            <% end %>
+
           </div>
         </div>
       </li>
     <!-- <div class="underline"></div> -->
       <% end %>
-
-      <% end %>
-
-    </ul>
-  </div>
+    <% end %>
+  </ul>
 </div>
 
 <!-- https://images.unsplash.com/photo-1606290979721-07c4dd5431a9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9' -->

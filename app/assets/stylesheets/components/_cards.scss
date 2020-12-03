@@ -1,7 +1,27 @@
 .chat-container {
-  background: white;
-  height: 100vh;
-  margin: auto;
+  height: 75vh;
+  margin: -30px 0 0 0;
+  border-radius: 20px;
+  background: $light-gray;
+  overflow-y: scroll;
+}
+
+.header-index {
+  height: 18vh !important;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px 20px;
+}
+
+.icon-search {
+  font-size: 22px !important;
+}
+
+.img-icon-separate {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
 .chat-card {
@@ -9,7 +29,7 @@
   margin-top: 4px;
   margin-left: 4px;
   margin-right: 4px;
-  border-bottom: 1px solid rgba(255,255,255, 0.3);
+  // border-bottom: 1px solid rgba(255,255,255, 0.3);
 }
 
 .chat-background {
@@ -33,6 +53,8 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  width: 80%;
+  border-bottom: 1px solid rgba(0,0,0,0.5)
 }
 
 .profile-details
@@ -50,6 +72,7 @@
 .profile-box {
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid rgba(0,0,0,0.5);
 }
 
 .user-details p {
@@ -64,3 +87,20 @@ a {
   text-decoration: none;
 }
 
+.bold-text {
+  font-weight: bold;
+  font-size: 18px !important;
+}
+
+.bold-large-text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.opacity-text {
+  opacity: 0.7;
+}
+
+.centered {
+  align-items: center;
+}
