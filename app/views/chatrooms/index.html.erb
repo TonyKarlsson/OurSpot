@@ -1,20 +1,21 @@
-<div class="header header-index d-flex">
-  <div class="img-icon-separate">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar-sm" %>
-    <% else %>
-      <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
-    <% end %>
-    <i class="fas fa-search white icon-search"></i>
+<div class="background">
+  <div class="header header-index d-flex">
+    <div class="img-icon-separate">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-sm" %>
+      <% else %>
+        <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+      <% end %>
+      <i class="fas fa-search white icon-search"></i>
+    </div>
+    <h4 style="color: white;" class="my-3">My Spots</h4>
   </div>
-  <h4 style="color: white;" class="my-3">My Spots</h4>
-</div>
-<div class="chat-container chat-background pt-2">
-  <ul class="list-unstyled">
-    <% @chatrooms.each do |chatroom| %>
-    <li class="chat-card">
-      <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
-        <div class="d-flex p-3 centered">
+  <div class="chat-container chat-background pt-2">
+    <ul class="list-unstyled">
+      <% @chatrooms.each do |chatroom| %>
+      <li class="chat-card">
+        <%= link_to chatroom_path(chatroom), class:"link-unstyled" do %>
+          <div class="d-flex p-3 centered">
             <% if current_user == chatroom.friend1 && chatroom.friend2.photo.attached? %>
               <%= cl_image_tag chatroom.friend2.photo.key, class: "avatar-sm" %>
             <% elsif current_user == chatroom.friend2 && chatroom.friend1.photo.attached? %>

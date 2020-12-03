@@ -1,44 +1,45 @@
-<div class="header header-index d-flex">
-  <div class="img-icon-separate">
-    <% if current_user.photo.attached? %>
-      <%= cl_image_tag current_user.photo.key, class: "avatar-sm" %>
-    <% else %>
-      <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
-    <% end %>
-    <i class="fas fa-search white icon-search"></i>
-  </div>
-  <h4 style="color: white;" class="my-3">Find Friends</h4>
-</div>
-<div class="chat-container chat-background pt-2">
-   <ul class="list-unstyled">
-      <% @users.each do |user| %>
-        <li class="chat-card" style="padding: 0 !important;">
-          <div class="d-flex profile-box p-3">
-            <div class="profile-details">
-              <% if user.photo.attached? %>
-                <%= cl_image_tag user.photo.key, class: "avatar-sm" %>
-              <% else %>
-                  <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
-              <% end %>
-              <!-- <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/<%=rand(1..20)%>.jpg" alt=""> -->
-              <p class="ml-3 bold-large-text" style="color: black !important"><%= user.username %></p>
-            </div>
-            <% if current_user.pending_friends.include?(user) %>
-              <div>
-                <%= link_to "Pending", add_friend_path(user_id: user.id), method: :put, class:"btn btn-primary disabled" %>
-              </div>
-            <% else %>
-              <div>
-                <%= link_to "Add friend", add_friend_path(user_id: user.id), method: :put, class:"btn btn-primary" %>
-              </div>
-            <% end %>
-          </div>
-        </li>
-    <!-- <div class="underline"></div> -->
+<div class="background">
+  <div class="header header-index d-flex">
+    <div class="img-icon-separate">
+      <% if current_user.photo.attached? %>
+        <%= cl_image_tag current_user.photo.key, class: "avatar-sm" %>
+      <% else %>
+        <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
       <% end %>
-    </ul>
-
+      <i class="fas fa-search white icon-search"></i>
+    </div>
+    <h4 style="color: white;" class="my-3">Find Friends</h4>
   </div>
-  <%= render 'shared/new_message_button' %>
+  <div class="chat-container chat-background pt-2">
+     <ul class="list-unstyled">
+        <% @users.each do |user| %>
+          <li class="chat-card" style="padding: 0 !important;">
+            <div class="d-flex profile-box p-3">
+              <div class="profile-details">
+                <% if user.photo.attached? %>
+                  <%= cl_image_tag user.photo.key, class: "avatar-sm" %>
+                <% else %>
+                    <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+                <% end %>
+                <!-- <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/<%=rand(1..20)%>.jpg" alt=""> -->
+                <p class="ml-3 bold-large-text" style="color: black !important"><%= user.username %></p>
+              </div>
+              <% if current_user.pending_friends.include?(user) %>
+                <div>
+                  <%= link_to "Pending", add_friend_path(user_id: user.id), method: :put, class:"btn btn-main-dark btn-primary disabled" %>
+                </div>
+              <% else %>
+                <div>
+                  <%= link_to "Add friend", add_friend_path(user_id: user.id), method: :put, class:"btn btn-main-dark btn-primary" %>
+                </div>
+              <% end %>
+            </div>
+          </li>
+      <!-- <div class="underline"></div> -->
+        <% end %>
+      </ul>
+
+    </div>
+    <%= render 'shared/new_message_button' %>
 </div>
 

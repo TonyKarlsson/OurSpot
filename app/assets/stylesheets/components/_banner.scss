@@ -37,10 +37,10 @@
   background: rgba(255,255,255, 0);
   font-size: 18px;
   font-weight: light;
-  color: white; 
+  color: white;
   border: 1px solid white;
   &:focus {
-    background: rgba(255,255,255, 0); 
+    background: rgba(255,255,255, 0);
     font-size: 18px;
     color: white;
     border: 1px solid white;
@@ -66,26 +66,27 @@
   background: rgba(255,255,255, 0);
   font-size: 18px;
   font-weight: light;
-  color: #19115a; 
-  border: 1px solid #19115a;
+  color: #19115a;
+  border: 1.5px solid #19115a;
+  border-radius: 50rem;
   &:focus {
-    background: rgba(255,255,255, 0); 
+    background: rgba(255,255,255, 0);
     font-size: 18px;
     color: #19115a;
-    border: 1px solid #19115a;
+    border: 1.5px solid #19115a;
     box-shadow: none;
   }
 }
 
 .btn-main-dark:hover {
   color: #19115a;
-  border: 1px solid #19115a !important;
+  border: 1.5px solid #19115a !important;
   background: rgba(255,255,255, 0.1) !important;
 }
 
 .btn-main-dark:active {
   color: rgba(255,255,255, 0.1) !important;
   background: rgba(255,255,255, 0.1) !important;
-  border: 1px solid rgba(255,255,255, 0.1) !important;
+  border: 1.5px solid rgba(255,255,255, 0.1) !important;
   box-shadow: none !important;
 }
