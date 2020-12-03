@@ -34,15 +34,19 @@
               <% last_message = chatroom.friend2.messages.last %>
                 <% if last_message.class == Message && !last_message.read %>
                   <h4 class="black">You have a new spot</h4>
-                <% else %>
+                <% elsif !last_message.nil? %>
                   <p class="black opacity-text"><%= chatroom.friend2.messages.last.content %></p>
+                  <% else %>
+                  <p class="black opacity-text">No message</p>
                 <% end %>
             <% else %>
               <% last_message = chatroom.friend1.messages.last %>
-                <% if last_message.class == Message && !last_message.read  %>
+                <% if last_message.class == Message && !last_message.read %>
                   <h4 class="black">You have a new spot</h4>
-                <% else %>
+                <% elsif !last_message.nil? %>
                   <p class="black opacity-text"><%= chatroom.friend1.messages.last.content %></p>
+                  <% else %>
+                  <p class="black opacity-text">No message</p>
                 <% end %>
             <% end %>
 
