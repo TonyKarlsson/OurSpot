@@ -1,17 +1,27 @@
-<div class="chat-container chat-background" style="background-image: url('https://images.unsplash.com/photo-1606235268286-cfc161fed099?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9');">
-  <div class="background-blur">
-   <ul class="list-unstyled margin-from-navbar">
+<div class="header header-index d-flex">
+  <div class="img-icon-separate">
+    <% if current_user.photo.attached? %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar-sm" %>
+    <% else %>
+      <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+    <% end %>
+    <i class="fas fa-search white icon-search"></i>
+  </div>
+  <h4 style="color: white;" class="my-3">Find Friends</h4>
+</div>
+<div class="chat-container chat-background pt-2">
+   <ul class="list-unstyled">
       <% @users.each do |user| %>
-        <li class="chat-card">
+        <li class="chat-card" style="padding: 0 !important;">
           <div class="d-flex profile-box p-3">
             <div class="profile-details">
               <% if user.photo.attached? %>
-                <%= cl_image_tag user.photo.key, class: "avatar" %>
+                <%= cl_image_tag user.photo.key, class: "avatar-sm" %>
               <% else %>
-                  <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
+                  <img class="avatar-sm" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
               <% end %>
               <!-- <img class="avatar" src="https://randomuser.me/api/portraits/thumb/men/<%=rand(1..20)%>.jpg" alt=""> -->
-              <p class="ml-3"><%= user.username %></p>
+              <p class="ml-3 bold-large-text" style="color: black !important"><%= user.username %></p>
             </div>
             <% if current_user.pending_friends.include?(user) %>
               <div>
@@ -27,6 +37,7 @@
     <!-- <div class="underline"></div> -->
       <% end %>
     </ul>
+
   </div>
   <%= render 'shared/new_message_button' %>
 </div>
