@@ -5,6 +5,7 @@
   padding: 150px 0;
   display: flex;
   justify-content: center;
+  background-image: image-url("background-ourspot.png")
 }
 
 .banner h1 {
@@ -20,4 +21,42 @@
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.log-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign-up span {
+  font-size: 14px;
+}
+
+.btn-log-in {
+  background: #8644fc;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  &:focus {
+    background: #8644fc;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.btn-log-in:hover {
+  color: white;
+  background: #8644fc;
+  border: none;
+}
+
+.btn-log-in:active {
+  color: white !important;
+  background: #8644fc !important;
+  border: none !important;
 }
