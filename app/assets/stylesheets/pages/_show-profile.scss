@@ -16,6 +16,24 @@
   justify-content: center;
 }
 
+.white {
+  color: white;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.log-out-btn {
+  color: white;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  text-shadow: 1px 1px 2px $gray;
+  font-size: 16px;
+  font-weight: bold;
+}
+
 .profile-content {
   padding-top: 0;
   position: relative;

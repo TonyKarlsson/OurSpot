@@ -1,5 +1,8 @@
 <div class="footer-container">
     <%= link_to (image_tag "home-icon.svg", class:"icon-footer"), root_path %>
     <%= link_to (image_tag "ourspot-symb-pos.png", class:"logo-footer", id:"message-btn"), new_message_path %>
-    <%= link_to (image_tag "user-icon.svg", class:"icon-footer"), chatrooms_path %>
+    <%= link_to (image_tag "friends-icon.svg", class:"icon-footer"), users_path %>
+    <% if current_user %>
+    <%= link_to (image_tag "user-icon.svg", class:"icon-footer"), profile_path(current_user) %>
+    <% end %>
 </div>
