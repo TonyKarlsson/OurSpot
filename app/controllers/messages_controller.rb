@@ -68,6 +68,6 @@ class MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit(:content, photos: [])
+    params.require(:message).permit(:content, :photo)
   end
 end

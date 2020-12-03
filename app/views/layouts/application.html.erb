@@ -16,10 +16,10 @@
   </head>
 
     <%= render 'shared/flashes' %>
+    <%= yield %>
     <% if current_page?(chatrooms_path) %>
       <%= render 'shared/new_message_button' %>
     <% end %>
-    <%= yield %>
   </body>
 
 </html>

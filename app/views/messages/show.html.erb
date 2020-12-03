@@ -1,7 +1,5 @@
 <h4> <%= @message.content %> </h4>
-<% @message.photos.each do |photo| %>
-  <%= cl_image_tag photo.key %>
-<% end %>
+<%= cl_image_tag @message.photo.key %>
 
 
 <li class="list-group-item">
