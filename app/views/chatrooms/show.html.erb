@@ -9,9 +9,9 @@
           <img class="avatar-medium ml-3 mt-3 mb-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU" alt="">
       <% end %>
       <!-- <img class="avatar-medium ml-3 mt-3 mb-3" src="https://images.unsplash.com/photo-1606248174040-df0429d73afa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80" alt=""> -->
-     <h4 class="ml-4 mt-3 mb-2" style="color: white;"><%=@chatroom.recipient(current_user)%></h4>
+     <h4 class="ml-4 mt-3 mb-2 caps-title" style="color: white;"><%=@chatroom.recipient(current_user)%></h4>
     </div>
-    <div class="text-body" data-chatroom-id="<%= @chatroom.id %>">
+    <div class="text-body chat-container" data-chatroom-id="<%= @chatroom.id %>">
 
 
         <% @chatroom.messages.each do |message| %>
@@ -28,7 +28,7 @@
           <label for="file-input">
             <i class="fas fa-paperclip icon-fas"></i>
           </label>
-          <%= f.file_field :photos, multiple: true, id: "file-input" %>
+          <%= f.file_field :photo, id: "file-input" %>
         </div>
 
         <%= f.input :content, label: false, wrapper_html: { class: 'text-area-input' } ,input_html: { class: 'text-input' } %>
