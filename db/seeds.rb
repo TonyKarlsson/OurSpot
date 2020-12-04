@@ -11,37 +11,37 @@ User.destroy_all
 puts "destroyed seeds"
 
 
-sarmad = User.create(email: "sarmad@ourspot.com", password:"123456", username:"SarmadK")
-vasil = User.create(email: "vasil@ourspot.com", password:"123456", username:"VasilH")
-michael = User.create(email: "michael@ourspot.com", password:"123456", username:"MichaelD")
-tony = User.create(email: "tony@ourspot.com", password:"123456", username:"TonyK")
-dareos = User.create(email: "dareos@ourspot.com", password:"123456", username:"Dareos")
-yaniv = User.create(email: "yaniv@ourspot.com", password:"123456", username:"Yaniv")
-karen = User.create(email: "karen@ourspot.com", password:"123456", username:"karen")
-james = User.create(email: "james@ourspot.com", password:"123456", username:"james")
-harry = User.create(email: "harry@ourspot.com", password:"123456", username:"harry")
+# sarmad = User.create(email: "sarmad@ourspot.com", password:"123456", username:"SarmadK")
+# vasil = User.create(email: "vasil@ourspot.com", password:"123456", username:"VasilH")
+# michael = User.create(email: "michael@ourspot.com", password:"123456", username:"MichaelD")
+# tony = User.create(email: "tony@ourspot.com", password:"123456", username:"TonyK")
+# dareos = User.create(email: "dareos@ourspot.com", password:"123456", username:"Dareos")
+# yaniv = User.create(email: "yaniv@ourspot.com", password:"123456", username:"Yaniv")
+# karen = User.create(email: "karen@ourspot.com", password:"123456", username:"karen")
+# james = User.create(email: "james@ourspot.com", password:"123456", username:"james")
+# harry = User.create(email: "harry@ourspot.com", password:"123456", username:"harry")
 
 
 
-sarmad.friend_request(tony) # Sarmad and Tony are friends
-sarmad.friend_request(michael)
-sarmad.friend_request(vasil)
-michael.accept_request(sarmad)
-vasil.accept_request(sarmad)
-tony.accept_request(sarmad)
-vasil.friend_request(michael) # Vasil and Michael are friends
-vasil.friend_request(tony)
-michael.accept_request(vasil)
-tony.accept_request(vasil)
-michael.friend_request(tony) # Michael and Tony are friends
-tony.accept_request(michael)
-yaniv.friend_request(tony)
-dareos.friend_request(tony)
-tony.accept_request(yaniv)
-tony.accept_request(dareos)
+# sarmad.friend_request(tony) # Sarmad and Tony are friends
+# sarmad.friend_request(michael)
+# sarmad.friend_request(vasil)
+# michael.accept_request(sarmad)
+# vasil.accept_request(sarmad)
+# tony.accept_request(sarmad)
+# vasil.friend_request(michael) # Vasil and Michael are friends
+# vasil.friend_request(tony)
+# michael.accept_request(vasil)
+# tony.accept_request(vasil)
+# michael.friend_request(tony) # Michael and Tony are friends
+# tony.accept_request(michael)
+# yaniv.friend_request(tony)
+# dareos.friend_request(tony)
+# tony.accept_request(yaniv)
+# tony.accept_request(dareos)
 
 
-puts "new Users created"
+# puts "new Users created"
 # # User.create(email: "blah@ourspot.com", password:"123456")
 # # User.create(email: "trash@ourspot.com", password:"123456")
 # # User.create(email: "nothing@ourspot.com", password:"123456")
