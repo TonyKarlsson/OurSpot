@@ -1,11 +1,11 @@
 .container-form {
-  height: 100vh;
+  // max-height: 90vh;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   margin-right: 20px;
   margin-left: 20px;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   // background-image: image-url("background-ourspot.png");
   // background-size: cover;
   // background-position: center;
@@ -19,15 +19,14 @@
 }
 
 .form-container {
-    width: 100%;
-    padding: 30px;
-    background: white;
-    border-radius: 15px;
-    margin-top : 20px;
+  width: 100%;
+  padding: 30px;
+  background: white;
+  border-radius: 15px;
 }
 
 .text-area-icon {
-  margin-bottom: 0 !important;
+  margin-bottom: 10px;
 }
 
 .rnd-fas {
@@ -58,4 +57,5 @@
 
 #friend2 {
   margin-bottom: 10px;
+  width: 100%;
 }

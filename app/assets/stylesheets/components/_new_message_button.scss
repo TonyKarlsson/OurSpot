@@ -1,6 +1,5 @@
 .footer-container {
-  background: white;
-  height: 7vh;
+  height: 68px;
   position: fixed;
   bottom: 0;
   display: flex;
@@ -8,12 +7,18 @@
   justify-content: space-around;
   width: 100%;
   z-index: 2;
-  background: transparent;
-
   img{
     // width: 100px;
     height: 30px;
   }
+}
+
+.transparent {
+  background: transparent;
+}
+
+.purple {
+  background: $light-purple;
 }
 
 .logo-footer {

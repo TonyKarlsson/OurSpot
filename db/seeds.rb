@@ -61,12 +61,3 @@ puts "destroyed seeds"
 # Message.create(chatroom:Chatroom.second, content:"Thanks bud, having a great time here!", user:User.find_by(username:"MichaelD"))
 # Message.create(chatroom:Chatroom.last, content:"The best burger in town, hands down!", user:User.find_by(username:"TonyK"))
 # puts "new Messages created"
-
-
-
-
-
-
-
-
-

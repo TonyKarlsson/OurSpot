@@ -1,4 +1,4 @@
-<div class="footer-container">
+<div class="footer-container <%= @home ? 'transparent' : 'purple' %>">
     <%= link_to (image_tag "home-icon.svg", class:"icon-footer"), root_path %>
     <%= link_to (image_tag "chatrooms-icon.svg", class:"icon-footer"), chatrooms_path %>
     <%= link_to (image_tag "ourspot-symb-pos.png", class:"logo-footer", id:"message-btn"), new_message_path %>
