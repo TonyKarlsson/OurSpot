@@ -1,9 +1,10 @@
 .chat-container {
-  height: 78vh;
+  height: 76vh;
   margin: 0 20px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
-  background: $light-gray;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
   overflow-y: scroll;
 }
 

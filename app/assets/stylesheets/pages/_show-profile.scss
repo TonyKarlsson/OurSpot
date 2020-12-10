@@ -43,7 +43,8 @@
 
 .section {
   padding: 70px 0;
-  background-color: #fff;
+  background-color: rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
   height: 67vh;
   margin: -35px 0 0 0;
   border-top-left-radius: 35px;
@@ -89,6 +90,7 @@
 .title {
   margin-bottom: 25px;
   min-height: 32px;
+  color: lightgoldenrodyellow;
 }
 
 .friend-wrap {

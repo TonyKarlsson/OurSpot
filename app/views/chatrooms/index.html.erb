@@ -25,29 +25,29 @@
             <% end %>
             <div class="user-details ml-3">
             <%  if current_user == chatroom.friend1  %>
-              <p class="black bold-text"><%= chatroom.friend2.username %></p>
+              <p class="bold-text" style="color: lightgoldenrodyellow"><%= chatroom.friend2.username %></p>
             <% else %>
-              <p class="black bold-text"><%= chatroom.friend1.username %></p>
+              <p class="bold-text" style="color: lightgoldenrodyellow"><%= chatroom.friend1.username %></p>
             <% end %>
 
             <%  if current_user == chatroom.friend1  %>
             <%# raise %>
               <% last_message = chatroom.friend2.messages.last %>
                 <% if last_message.class == Message && !last_message.read %>
-                  <p class="black" style="font-weight: bold;">You have a new spot</p>
+                  <p style="font-weight: bold; color: lightgoldenrodyellow">You have a new spot</p>
                 <% elsif !last_message.nil? %>
-                  <p class="black opacity-text"><%= chatroom.friend2.messages.last.content %></p>
+                  <p class=" opacity-text" style="color: lightgoldenrodyellow"><%= chatroom.friend2.messages.last.content %></p>
                   <% else %>
-                  <p class="black opacity-text">Spot sent</p>
+                  <p class=" opacity-text" style="color: lightgoldenrodyellow">Spot sent</p>
                 <% end %>
             <% else %>
               <% last_message = chatroom.friend1.messages.last %>
                 <% if last_message.class == Message && !last_message.read %>
-                  <p class="black" style="font-weight: bold;">You have a new spot</p>
+                  <p style="font-weight: bold; color: lightgoldenrodyellow">You have a new spot</p>
                 <% elsif !last_message.nil? %>
-                  <p class="black opacity-text"><%= chatroom.friend1.messages.last.content %></p>
+                  <p class=" opacity-text" style="color: lightgoldenrodyellow"><%= chatroom.friend1.messages.last.content %></p>
                   <% else %>
-                  <p class="black opacity-text">Spot sent</p>
+                  <p class=" opacity-text" style="color: lightgoldenrodyellow">Spot sent</p>
                 <% end %>
             <% end %>
 
