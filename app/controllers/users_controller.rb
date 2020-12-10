@@ -22,14 +22,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     authorize @user
     current_user.accept_request(@user)
-    redirect_to profile_path(current_user)
+    redirect_to users_path
   end
 
   def reject_friend
     @user = User.find(params[:user_id])
     authorize @user
     current_user.decline_request(@user)
-    redirect_to profile_path(current_user)
+    redirect_to users_path
   end
 
 end

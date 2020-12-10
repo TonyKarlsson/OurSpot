@@ -6,8 +6,7 @@
       <% if current_user %>
         <%= link_to "See my spots", chatrooms_path, class: "btn btn-main rounded-pill btn-log-in w-40 py-2 px-3"  %>
       <% else %>
-        <%= link_to "Log In", new_user_session_path, class: "btn btn-main rounded-pill w-50 btn-log-in" %>
-        <span class="white my-2">or</span>
+        <%= link_to "Log In", new_user_session_path, class: "btn btn-main rounded-pill w-50 btn-log-in mb-3" %>
         <div class="sign-up w-100">
           <span class="white">New to OurSpot?</span> <%= link_to new_user_registration_path, class: "white"  do%>
             <span class="white" style="text-decoration: underline;">Sign Up</span>
